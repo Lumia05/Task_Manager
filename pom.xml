@@ -32,7 +32,7 @@
 		<sonar.projectKey>lumiere_task-manager</sonar.projectKey>
 		<sonar.organization>lumiere</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Data & JPA -->
