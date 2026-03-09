@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -20,7 +21,8 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<TaskDTO> createTask(Authentication authentication, @RequestBody CreateTaskRequest request) {
+    public ResponseEntity<TaskDTO> createTask(Authentication authentication,
+            @Valid @RequestBody CreateTaskRequest request) {
         String username = authentication.getName();
         TaskDTO task = taskService.createTask(username, request);
         return ResponseEntity.ok(task);
@@ -48,7 +50,7 @@ public class TaskController {
     public ResponseEntity<TaskDTO> updateTask(
             Authentication authentication,
             @PathVariable Long id,
-            @RequestBody CreateTaskRequest request) {
+            @Valid @RequestBody CreateTaskRequest request) {
         String username = authentication.getName();
         TaskDTO task = taskService.updateTask(username, id, request);
         return ResponseEntity.ok(task);
