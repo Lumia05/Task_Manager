@@ -21,7 +21,7 @@ public class JwtTokenProvider {
 
     public String generateToken(String username) {
         return Jwts.builder()
-                .subject(username)
+                .setSubject(username)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey())
@@ -50,7 +50,7 @@ public class JwtTokenProvider {
                 .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
-                .getPayload();
+                .getBody();
     }
 
     private SecretKey getSigningKey() {
